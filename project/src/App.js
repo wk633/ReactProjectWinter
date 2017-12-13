@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import {addOne, minusOne} from './myRedux'
+import {addOne, minusOne, addOneAsync} from './myRedux'
 
 class App extends Component {
   render() {
@@ -9,8 +9,9 @@ class App extends Component {
     return (
       <div className="App">
         {`current state value ${value}`}<br/>
-        <button onClick={()=>store.dispatch(addOne())}>add one</button>
-        <button onClick={()=>store.dispatch(minusOne())}>minus one</button>
+        <button onClick={()=>store.dispatch(addOne())}>add one</button><br/>
+        <button onClick={()=>store.dispatch(minusOne())}>minus one</button><br/>
+        <button onClick={()=>store.dispatch(addOneAsync())} >add one after 1 s</button>
       </div>
     );
   }

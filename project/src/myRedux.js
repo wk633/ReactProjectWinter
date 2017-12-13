@@ -19,3 +19,10 @@ export function addOne(){
 export function minusOne(){
     return {type: MINUS_ONE};
 }
+export function addOneAsync(){
+    return dispatch=>{
+        setTimeout(() => {
+            dispatch(addOne());
+        }, 1000);
+    }
+}
