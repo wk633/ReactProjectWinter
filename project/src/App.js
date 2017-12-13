@@ -3,6 +3,10 @@ import { connect } from 'react-redux';
 import './App.css';
 import {addOne, minusOne, addOneAsync} from './myRedux'
 
+@connect(
+  state => ({value: state}),
+  {addOne, minusOne, addOneAsync}
+)
 class App extends Component {
   render() {
     return (
@@ -16,10 +20,5 @@ class App extends Component {
   }
 }
 
-const mapStatetoProps = (state) => {
-  return {value: state};
-}
-const actionCreator = {addOne, minusOne, addOneAsync};
-App = connect(mapStatetoProps, actionCreator)(App);
 
 export default App;

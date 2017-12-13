@@ -11,6 +11,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
     - use provider and connect
         - "provider" component is put on the outermost layer, use only once
         - "connect" get parameters from outer layer(can use decorator to write)
+        - can use decorator to write connect(need to install babel-plugin-transform-decorators-legacy, and add plugin configuration in package.json)
 
 
 
