@@ -1,8 +1,14 @@
 import React from 'react';
+import Logo from '../../component/logo/logo';
 
 class Register extends React.Component{
     render(){
-        return <h2>register page</h2>;
+        return (
+            <div>
+                <Logo></Logo>
+                <h2>register page</h2>
+            </div>
+        );
     }
 }
 
