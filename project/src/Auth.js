@@ -1,37 +1,22 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { login } from './Auth.redux';
+import { login, getUserData } from './Auth.redux';
 import { Redirect } from 'react-router-dom';
-import axios from 'axios';
 
 @connect(
     state =>  state.auth,
-    {login}
+    {login, getUserData}
 )
 class Auth extends React.Component{
-    constructor(props) {
-        super(props);
-        this.state = {
-            data: {}
-        }
-    }
     componentDidMount(){
-        axios.get('/data')
-        .then(res => {
-            if(res.status === 200) {
-                console.log(res);
-                this.setState({data: res.data[0]})
-            }
-            
-        })
+        this.props.getUserData();
     }
     render(){
-        const userName = this.state.data.name;
-        console.log(userName);
+        console.log(this);
         return (
             <div>
                 {this.props.isAuth ? <Redirect to='/dashboard' /> : null}
-                <h2>login first! user: {userName}</h2>
+                <h2>login first! user:{this.props.name}, age: {this.props.age}</h2>
                 <button onClick={this.props.login}>login</button>
             </div>
         );
