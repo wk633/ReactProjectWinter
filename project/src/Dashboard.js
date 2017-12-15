@@ -28,6 +28,7 @@ class Dashboard extends React.Component{
         const redirectToLogin = (<Redirect to='/login'></Redirect>);
         const app = (
             <div>
+                <button onClick={this.props.logout}>log out</button>
                 <ul>
                     <li><Link to='/dashboard'>root</Link></li>
                     <li><Link to='/dashboard/test1'>test1</Link></li>
