@@ -12,11 +12,9 @@ import Auth from './Auth';
 import Dashboard from './Dashboard';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
-
 import { createStore, applyMiddleware, compose } from 'redux';
-
 import reducer from './reducer';
-
+import './config';
 
 const reduxDevTools = window.devToolsExtension?window.devToolsExtension():f=>f;
 
