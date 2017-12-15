@@ -22,7 +22,7 @@ const reduxDevTools = window.devToolsExtension?window.devToolsExtension():f=>f;
 
 
 const store = createStore(reducer, compose(applyMiddleware(thunk), reduxDevTools));
-console.log(store.getState());
+// console.log(store.getState());
 
 
 ReactDOM.render((
