@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import {
-    BrowserRouter
+    BrowserRouter, Route
 } from 'react-router-dom';
 
 import './index.css';
@@ -11,8 +11,9 @@ import registerServiceWorker from './registerServiceWorker';
 import { createStore, applyMiddleware, compose } from 'redux';
 import reducer from './reducer';
 import './config';
+import Login from './container/login/login';
+import Register from './container/register/register';
 
-import { Button } from 'antd-mobile';
 
 const reduxDevTools = window.devToolsExtension?window.devToolsExtension():f=>f;
 
@@ -25,8 +26,8 @@ ReactDOM.render((
     <Provider store={store}>
         <BrowserRouter>
             <div>
-                <h2>head 2</h2>
-                <Button>button</Button>
+                <Route path='/login' component={Login}></Route>
+                <Route path='/register' component={Register}></Route>
             </div>
         </BrowserRouter> 
     </Provider>
