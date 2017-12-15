@@ -12,6 +12,8 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import reducer from './reducer';
 import './config';
 
+import { Button } from 'antd-mobile';
+
 const reduxDevTools = window.devToolsExtension?window.devToolsExtension():f=>f;
 
 
@@ -22,6 +24,10 @@ const store = createStore(reducer, compose(applyMiddleware(thunk), reduxDevTools
 ReactDOM.render((
     <Provider store={store}>
         <BrowserRouter>
+            <div>
+                <h2>head 2</h2>
+                <Button>button</Button>
+            </div>
         </BrowserRouter> 
     </Provider>
 ), document.getElementById('root'));
