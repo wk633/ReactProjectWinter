@@ -4,7 +4,7 @@ import './App.css';
 import {addOne, minusOne, addOneAsync} from './myRedux'
 
 @connect(
-  state => ({value: state}),
+  state => ({value: state.currentNum}), // reducers.js: combineReducers({currentNum: count, auth})
   {addOne, minusOne, addOneAsync}
 )
 class App extends Component {
