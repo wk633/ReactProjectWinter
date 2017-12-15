@@ -15,6 +15,12 @@ class Login extends React.Component{
             <div>
                 <Logo></Logo>
                 <WingBlank>
+                    <List>
+                        <InputItem>UserName</InputItem>
+                        <WhiteSpace/>
+                        <InputItem>Password</InputItem>
+                    </List>
+                    <WhiteSpace/>
                     <Button type="primary">Log In</Button>
                     <WhiteSpace/>
                     <Button onClick={this.register} type="primary">Sign Up</Button>
