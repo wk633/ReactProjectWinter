@@ -25,21 +25,22 @@ class Test extends React.Component {
 class Dashboard extends React.Component{
     render(){
         console.log(this.props);
+        const match = this.props.match;
         const redirectToLogin = (<Redirect to='/login'></Redirect>);
         const app = (
             <div>
                 <button onClick={this.props.logout}>log out</button>
                 <ul>
-                    <li><Link to='/dashboard'>root</Link></li>
-                    <li><Link to='/dashboard/test1'>test1</Link></li>
-                    <li><Link to='/dashboard/test2'>test2</Link></li>
-                    <li><Link to='/dashboard/test3'>test3</Link></li>
+                    <li><Link to={`${match.url}`}>root</Link></li>
+                    <li><Link to={`${match.url}/test1`}>test1</Link></li>
+                    <li><Link to={`${match.url}/test2`}>test2</Link></li>
+                    <li><Link to={`${match.url}/test3`}>test3</Link></li>
                 </ul>
                 <Switch>
-                    <Route path='/dashboard' exact component={App}></Route>
-                    <Route path='/dashboard/test1' exact component={Test1}></Route>
-                    <Route path='/dashboard/test2' exact component={Test2}></Route>
-                    <Route path='/dashboard/:location' component={Test}></Route>
+                    <Route path={`${match.url}`} exact component={App}></Route>
+                    <Route path={`${match.url}/test1`} exact component={Test1}></Route>
+                    <Route path={`${match.url}/test2`} exact component={Test2}></Route>
+                    <Route path={`${match.url}/:location`} component={Test}></Route>
                 </Switch>
             </div>
         );
