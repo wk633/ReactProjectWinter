@@ -24,7 +24,6 @@ class Test extends React.Component {
 )
 class Dashboard extends React.Component{
     render(){
-        console.log(this.props);
         const match = this.props.match;
         const redirectToLogin = (<Redirect to='/login'></Redirect>);
         const app = (
