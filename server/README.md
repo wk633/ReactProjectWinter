@@ -1,6 +1,8 @@
 # package
 - express
 - mongoose
+- axio
+    - use proxy
 
 # development package
 - nodemon
