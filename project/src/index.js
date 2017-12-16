@@ -27,6 +27,7 @@ ReactDOM.render((
         <BrowserRouter>
             <div>
                 <AuthRouter></AuthRouter>
+                <Route path='/boss' component={null}></Route>
                 <Route path='/login' component={Login}></Route>
                 <Route path='/register' component={Register}></Route>
             </div>
