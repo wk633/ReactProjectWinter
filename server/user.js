@@ -14,13 +14,13 @@ Router.get('/list', (req, res) => {
 })
 
 Router.post('/register', (req, res) => {
-    console.log(req.body.data);
-    const {user, pwd, type} = req.body.data;
+    console.log(req.body);
+    const {user, pwd, type} = req.body;
     User.findOne({user: user}, (err, doc)=>{
         if(doc) {
             return res.json({code: 1, msg: 'duplicate username'});
         }else{
-            User.creat({user, pwd, type}, (e, d)=>{
+            User.create({user, pwd, type}, (e, d)=>{
                 if(e){
                     return res.json({code: 1, msg: 'db save error'});
                 }else{
