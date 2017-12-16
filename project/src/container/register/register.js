@@ -22,9 +22,9 @@ class Register extends React.Component{
                         <WhiteSpace/>
                         <InputItem>Confirm</InputItem>
                         <WhiteSpace/>
-                        <RadioItem checked={this.state.type=='genius'}>Genius</RadioItem>
+                        <RadioItem checked={this.state.type==='genius'}>Genius</RadioItem>
                         <WhiteSpace/>
-                        <RadioItem checked={this.state.type=='boss'}>Boss</RadioItem>
+                        <RadioItem checked={this.state.type==='boss'}>Boss</RadioItem>
                         <WhiteSpace/>
                         <Button type="primary">Register</Button>
                     </List>

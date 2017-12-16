@@ -6,7 +6,7 @@ export default class AuthRoute extends React.Component{
         // get user info
         axios.get('/user/info')
         .then((res) => {
-            if(res.status == 200) {
+            if(res.status === 200) {
                 console.log(res.data);
             }
         })

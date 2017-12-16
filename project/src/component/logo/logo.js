@@ -6,7 +6,7 @@ export default class Logo extends React.Component{
     render(){
         return (
             <div className="logo-container">
-                <img src={logoImg} />
+                <img src={logoImg} alt="logo"/>
             </div>
         )
     }
