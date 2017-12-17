@@ -33,6 +33,7 @@ class Login extends React.Component{
     render(){
         return (
             <div>
+                {this.props.msg ? <p>{this.props.msg}</p> : null}
                 <Logo></Logo>
                 <WingBlank>
                     <List>
