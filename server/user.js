@@ -39,6 +39,7 @@ Router.post('/login', (req, res) => {
     User.findOne({user, pwd: md5pwd(pwd)}, {pwd: 0}, (err, doc) => {
         if(err) return res.json({code: 1, msg: 'server error'});
         if(doc){
+            res.cookie('userId', doc._id);
             return res.json({code: 0, data: doc});
         }else{
             return res.json({code: 1, msg: 'wrong username or password'});
