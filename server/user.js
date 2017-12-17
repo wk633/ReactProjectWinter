@@ -18,6 +18,7 @@ Router.post('/register', (req, res) => {
     console.log(req.body);
     const {user, pwd, type} = req.body;
     User.findOne({user: user}, (err, doc)=>{
+        if(err) return res.json({code: 1, msg: 'server error'});
         if(doc) {
             return res.json({code: 1, msg: 'duplicate username'});
         }else{
@@ -31,6 +32,20 @@ Router.post('/register', (req, res) => {
         }
     })
 })
+
+Router.post('/login', (req, res) => {
+    console.log(req.body);
+    const {user, pwd} = req.body;
+    User.findOne({user, pwd: md5pwd(pwd)}, (err, doc) => {
+        if(err) return res.json({code: 1, msg: 'server error'});
+        if(doc){
+            return res.json({code: 0, data: doc});
+        }else{
+            return res.json({code: 1, msg: 'wrong username or password'});
+        }
+    })
+})
+
 function md5pwd(pwd){
     const salt = "somecrazyrandomstringpassword@~~@";
     return utils.md5(utils.md5(pwd + salt));

@@ -1,6 +1,7 @@
 import React from 'react';
 import Logo from '../../component/logo/logo';
 import {List, InputItem, WingBlank, WhiteSpace, Button} from 'antd-mobile';
+import {Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {login} from '../../redux/user.redux';
 
@@ -33,9 +34,10 @@ class Login extends React.Component{
     render(){
         return (
             <div>
-                {this.props.msg ? <p>{this.props.msg}</p> : null}
+                {this.props.redirectTo ? <Redirect to={this.props.redirectTo} /> : null}
                 <Logo></Logo>
                 <WingBlank>
+                    {this.props.msg ? <p>{this.props.msg}</p> : null}
                     <List>
                         <InputItem
                             onChange={v => this.handleChange('user', v)}
