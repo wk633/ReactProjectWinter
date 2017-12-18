@@ -32,11 +32,15 @@ Router.post('/register', (req, res) => {
         if(doc) {
             return res.json({code: 1, msg: 'duplicate username'});
         }else{
-            User.create({user, pwd: md5pwd(pwd), type}, (e, d)=>{
+            const userModel = new User({user, pwd: md5pwd(pwd), type});
+            userModel.save((e, d) => {
                 if(e){
                     return res.json({code: 1, msg: 'db save error'});
                 }else{
-                    return res.json({code: 0});
+                    console.log(d);
+                    const {user, type, _id} = d;
+                    res.cookie('userId', _id);
+                    return res.json({code: 0, data: {user, type, _id}});
                 }
             })
         }

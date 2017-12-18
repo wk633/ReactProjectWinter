@@ -54,7 +54,7 @@ export function register({user, pwd, repeatpwd, type}){
         .then(res => {
             console.log(res);
             if(res.status === 200 && res.data.code === 0) {
-                dispatch(registerSuccess({user, pwd, type}));
+                dispatch(registerSuccess({user, type}));
             }else{
                 dispatch(errorMsg(res.data.msg));
             }
