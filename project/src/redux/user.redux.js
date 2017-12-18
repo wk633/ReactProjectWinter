@@ -2,6 +2,7 @@ import axios from 'axios';
 const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 const ERROR_MSG = 'ERROR_MSG';
+const LOAD_DATA = 'LOAD_DATA';
 
 import {getRedirectPath} from '../util';
 
@@ -9,7 +10,6 @@ const initState = {
     isAuth: false,
     msg: '',
     user: '',
-    pwd: '',
     type: ''
 }
 
@@ -24,6 +24,8 @@ export function user(state=initState, action){
             return {...state, isAuth: false, msg: action.msg};
         case LOGIN_SUCCESS:
             return {...state, isAuth: false, redirectTo: getRedirectPath(action.payload), ...action.payload};
+        case LOAD_DATA:
+            return {...state, ...action.payload};
         default: 
             return state
     }
@@ -36,6 +38,9 @@ function registerSuccess(data){
     return {type: REGISTER_SUCCESS, payload: data};
 }
 
+export function loadData(userinfo){
+    return {type: LOAD_DATA, payload: userinfo}; 
+}
 export function register({user, pwd, repeatpwd, type}){
     if(!user || !pwd || !type) {
         return errorMsg('need username and password');
