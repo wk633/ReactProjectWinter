@@ -14,7 +14,7 @@ import './config';
 import Login from './container/login/login';
 import Register from './container/register/register';
 import AuthRouter from './component/authroute/authroute';
-
+import BossInfo from './container/bossinfo/bossinfo';
 const reduxDevTools = window.devToolsExtension?window.devToolsExtension():f=>f;
 
 
@@ -27,7 +27,7 @@ ReactDOM.render((
         <BrowserRouter>
             <div>
                 <AuthRouter></AuthRouter>
-                <Route path='/boss' component={null}></Route>
+                <Route path='/bossinfo' component={BossInfo}></Route>
                 <Route path='/login' component={Login}></Route>
                 <Route path='/register' component={Register}></Route>
             </div>
