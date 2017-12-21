@@ -61,6 +61,22 @@ Router.post('/login', (req, res) => {
     })
 })
 
+Router.post('/update', (req, res)=>{
+    const userId = req.cookies.userId;
+    if(!userId) return res.json({code: 1, msg: 'login first'});
+    const body = req.body;
+    User.findByIdAndUpdate(userId, body, (err, doc)=>{
+        if(err) {
+            return res.json({code: 1, msg:'update data failed'});
+        }
+        const data = Object.assign({},{
+            user: doc.user,
+            type: doc.type
+        }, body);
+        return res.json({code: 0, data});
+    });
+})
+
 function md5pwd(pwd){
     const salt = "somecrazyrandomstringpassword@~~@";
     return utils.md5(utils.md5(pwd + salt));
