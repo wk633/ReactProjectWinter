@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import {NavBar} from 'antd-mobile';
+import NavLinkBar from '../../component/navlink/navlink';
 
 function Boss(){
     return (<h2>boss</h2>);
@@ -61,7 +62,11 @@ class DashBoard extends React.Component{
             }
         ]
         return (
-            <NavBar mode='dark'>{navList.find(v=>v.path===pathname).title}</NavBar>
+            <div>
+                <NavBar mode='dark'>{navList.find(v=>v.path===pathname).title}</NavBar>
+                <NavLinkBar data={navList}></NavLinkBar>
+            </div>
+            
         )
     }
 }
