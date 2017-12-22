@@ -43,7 +43,7 @@ export default class BossInfo extends React.Component{
                     Salary
                 </InputItem>
                 <TextareaItem onChange={(v) => this.onChange('desc', v)}
-                rows = {3}
+                rows={3}
                 autoHeight
                 title='Description'
                 ></TextareaItem>

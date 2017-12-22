@@ -18,7 +18,7 @@ export default class AvatarSelector extends React.Component{
         const GridHeader = this.state.text
                             ? (<div>
                                 selected avatar&nbsp;&nbsp;
-                                <img style={{width: 14}} src={this.state.icon}></img>
+                                <img style={{width: 14}} src={this.state.icon} alt=""></img>
                                 </div>)
                             : (<div>selected avatar</div>)
         return (

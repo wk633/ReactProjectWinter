@@ -38,7 +38,7 @@ class GeniusInfo extends React.Component{
                     position
                 </InputItem>
                 <TextareaItem onChange={(v) => this.onChange('desc', v)}
-                rows = {3}
+                rows={3}
                 autoHeight
                 title='Description'
                 ></TextareaItem>
