@@ -16,12 +16,11 @@ import Register from './container/register/register';
 import AuthRouter from './component/authroute/authroute';
 import BossInfo from './container/bossinfo/bossinfo';
 import GeniusInfo from './container/geniusinfo/geniusinfo.js';
+import DashBoard from './component/dashboard/dashboard.js';
+
 const reduxDevTools = window.devToolsExtension?window.devToolsExtension():f=>f;
 
-
 const store = createStore(reducer, compose(applyMiddleware(thunk), reduxDevTools));
-// console.log(store.getState());
-
 
 ReactDOM.render((
     <Provider store={store}>
@@ -32,6 +31,7 @@ ReactDOM.render((
                 <Route path='/geniusinfo' component={GeniusInfo}></Route>
                 <Route path='/login' component={Login}></Route>
                 <Route path='/register' component={Register}></Route>
+                <Route component={DashBoard}></Route>
             </div>
         </BrowserRouter> 
     </Provider>
