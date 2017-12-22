@@ -22,7 +22,7 @@ class NavLinkBar extends React.Component {
                         selectedIcon={{uri: require(`./img/${v.icon}-active.svg`)}}
                         selected={pathname===v.path}
                         onPress={() => {
-                            console.log('onpress');
+                            this.props.history.push(v.path);
                         }}
                     >
                     </TabBar.Item>
