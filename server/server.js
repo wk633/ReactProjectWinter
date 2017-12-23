@@ -8,7 +8,10 @@ const app = express() ;
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
 io.on('connection', (socket)=>{
-    console.log('user login');
+    socket.on('sendmsg', (data)=>{
+        console.log(data)
+        io.emit('recvmsg', data);
+    })
 })
 
 app.use(bodyParser.json());
