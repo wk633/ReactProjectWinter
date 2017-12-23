@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Switch, Route } from 'react-router-dom';
 import {NavBar} from 'antd-mobile';
 import NavLinkBar from '../../component/navlink/navlink';
 
@@ -63,7 +63,14 @@ class DashBoard extends React.Component{
         ]
         return (
             <div>
-                <NavBar mode='dark'>{navList.find(v=>v.path===pathname).title}</NavBar>
+                <NavBar className='fixed-header' mode='dark'>{navList.find(v=>v.path===pathname).title}</NavBar>
+                <div style={{marginTop: 45}}>
+                    <Switch>
+                        {navList.map(v=>(
+                            <Route key={v.path} path={v.path} component={v.component}></Route>
+                        ))}
+                    </Switch>
+                </div>
                 <NavLinkBar data={navList}></NavLinkBar>
             </div>
             
