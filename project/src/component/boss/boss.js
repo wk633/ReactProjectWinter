@@ -9,18 +9,12 @@ import {getUserList} from '../../redux/chatuser.redux';
     {getUserList}
 )
 class Boss extends React.Component{
-    constructor(props) {
-        super(props);
-        this.state = {
-            data: []
-        }
-    }
     componentDidMount(){
         this.props.getUserList('genius');
     }
     render(){
         console.log(this.state);
-        return (
+        return (s
             <WingBlank>
                 <WhiteSpace></WhiteSpace>
                 {this.props.userlist.map(v=>(
