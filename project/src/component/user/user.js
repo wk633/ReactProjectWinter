@@ -2,10 +2,12 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Result, List, WhiteSpace, Modal} from 'antd-mobile';
 import browserCookies from 'browser-cookies';
+import {logoutSubmit} from '../../redux/user.redux';
+import {Redirect} from 'react-router-dom';
 
 @connect(
     state=>state.user,
-    null
+    {logoutSubmit}
 )
 class User extends React.Component{
     constructor(props){
@@ -17,7 +19,8 @@ class User extends React.Component{
         alert('Log Out', 'Are you confirmed to log out?', [
             {text: 'Cancel', onPress: () => {}},
             {text: 'OK', onPress: () => {
-                browserCookies.erase('userId');
+                // browserCookies.erase('userId');
+                this.props.logoutSubmit();
             }}
         ])
     }
@@ -47,7 +50,7 @@ class User extends React.Component{
                     <Item onClick={this.logout}>Log Out</Item>
                 </List>
             </div>
-        ): null
+        ): <Redirect to={this.props.redirectTo} />
     }
 }
 export default User;

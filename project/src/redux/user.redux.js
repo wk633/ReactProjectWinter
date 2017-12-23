@@ -2,6 +2,7 @@ import axios from 'axios';
 const AUTH_SUCCESS = 'AUTH_SUCCESS';
 const ERROR_MSG = 'ERROR_MSG';
 const LOAD_DATA = 'LOAD_DATA';
+const LOG_OUT = 'LOG_OUT';
 
 import {getRedirectPath} from '../util';
 
@@ -22,6 +23,8 @@ export function user(state=initState, action){
             return {...state, isAuth: false, msg: action.msg};
         case LOAD_DATA:
             return {...state, ...action.payload};
+        case LOG_OUT:
+            return {...initState, redirectTo: '/login'}
         default: 
             return state
     }
@@ -87,4 +90,8 @@ export function update(data){
             }
         })
     }
+}
+
+export function logoutSubmit(){
+    return {type: LOG_OUT};
 }
