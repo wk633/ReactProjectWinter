@@ -5,15 +5,12 @@ import {NavBar} from 'antd-mobile';
 import NavLinkBar from '../navlink/navlink';
 import Boss from '../boss/boss';
 import Genius from '../genius/genius';
-
+import User from '../user/user';
 
 function Msg(){
     return (<h2>Message</h2>);
 }
-
-function Me(){
-    return (<h2>Me</h2>);
-}
+console.log(User);
 
 @withRouter
 @connect(
@@ -53,7 +50,7 @@ class DashBoard extends React.Component{
                 text: 'me',
                 icon: 'me',
                 title: 'me',
-                component: Me
+                component: User
             }
         ]
         return (
