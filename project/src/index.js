@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import {
-    BrowserRouter, Route
+    BrowserRouter, Route, Switch
 } from 'react-router-dom';
 
 import './index.css';
@@ -27,11 +27,14 @@ ReactDOM.render((
         <BrowserRouter>
             <div>
                 <AuthRouter></AuthRouter>
-                <Route path='/bossinfo' component={BossInfo}></Route>
-                <Route path='/geniusinfo' component={GeniusInfo}></Route>
-                <Route path='/login' component={Login}></Route>
-                <Route path='/register' component={Register}></Route>
-                <Route component={DashBoard}></Route>
+                <Switch>
+                    <Route path='/bossinfo' component={BossInfo}></Route>
+                    <Route path='/geniusinfo' component={GeniusInfo}></Route>
+                    <Route path='/login' component={Login}></Route>
+                    <Route path='/register' component={Register}></Route>
+                    <Route component={DashBoard}></Route>
+                </Switch>
+                
             </div>
         </BrowserRouter> 
     </Provider>

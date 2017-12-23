@@ -10,7 +10,6 @@ import User from '../user/user';
 function Msg(){
     return (<h2>Message</h2>);
 }
-console.log(User);
 
 @withRouter
 @connect(
