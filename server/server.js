@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const config = require('./config');
 
-const app = express() ;
+const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
 io.on('connection', (socket)=>{
@@ -16,6 +16,7 @@ io.on('connection', (socket)=>{
 
 app.use(bodyParser.json());
 app.use(cookieParser());
+// app.use(cors);
 app.use('/user', userRouter);
 
 server.listen(config.SERVER_PORT, ()=>{
