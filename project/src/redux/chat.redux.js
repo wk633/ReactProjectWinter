@@ -8,7 +8,8 @@ const MSG_READ = 'MSG_READ'; // read message
 
 const initState = {
     chatmsg: [],
-    unread: 0
+    unread: 0,
+    users:[]
 }
 
 export function chat(state=initState, action){

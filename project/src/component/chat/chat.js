@@ -1,5 +1,5 @@
 import React from 'react';
-import {List, InputItem, NavBar} from 'antd-mobile';
+import {List, InputItem, NavBar, Icon} from 'antd-mobile';
 import {connect} from 'react-redux';
 import {getMsgList, sendMsg, recvMsg} from '../../redux/chat.redux';
 
@@ -28,21 +28,36 @@ class Chat extends React.Component{
         this.setState({text: ''})
     }
     render(){
-        const user = this.props.match.params.user;
+        const userId = this.props.match.params.user;
         const Item = List.Item;
+        const users = this.props.chat.users;
+        console.log(users);
+        if(!users[userId]){return null;}
+
         return (
             <div id='chat-page'>
-                <NavBar mode='dark'>
-                    {user}
+                <NavBar 
+                    mode='dark'
+                    icon={<Icon type="left"/>}
+                    onLeftClick={()=>{
+                        this.props.history.goBack();
+                    }}
+                >
+                    {users[userId].name}
                 </NavBar>
                 {this.props.chat.chatmsg.map(v=>{
-                    return v.from===user?(
+                    const avatar = require(`../img/${users[v.from].avatar}.svg`)
+                    return v.from===userId?(
                         <List key={v._id}>
-                            <Item>{v.content}</Item>
+                            <Item
+                                thumb={avatar}
+                            >{v.content}</Item>
                         </List>
                     ):(
                         <List key={v._id}>
-                            <Item className="chat-me">{v.content}</Item>
+                            <Item
+                                extra={<img src={avatar} alt=''/>}
+                                className="chat-me">{v.content}</Item>
                         </List>
                     )
                 })}
