@@ -13,8 +13,6 @@ class Chat extends React.Component{
         this.state = {text: '', msg:[]};
     }
     componentDidMount(){
-        this.props.getMsgList();
-        this.props.recvMsg();
     }
     handleSubmit(){
         const from = this.props.user._id;
