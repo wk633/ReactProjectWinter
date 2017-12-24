@@ -19,8 +19,10 @@ function Msg(){
 )
 class DashBoard extends React.Component{
     componentDidMount(){
-        this.props.getMsgList();
-        this.props.recvMsg();
+        if(!this.props.chat.chatmsg.length){
+            this.props.getMsgList();
+            this.props.recvMsg();
+        }
     }
     render(){
         const {pathname} = this.props.location;
@@ -32,7 +34,7 @@ class DashBoard extends React.Component{
                 icon: 'boss',
                 title: 'boss',
                 component: Boss,
-                hide: user.type === 'genius'
+                hide: user.type === 'boss'
             },
             {
                 path: '/genius',
@@ -40,7 +42,7 @@ class DashBoard extends React.Component{
                 icon: 'genius',
                 title: 'genius',
                 component: Genius,
-                hide: user.type === 'boss'
+                hide: user.type === 'genius'
             },
             {
                 path: '/msg',

@@ -2,6 +2,7 @@ import React from 'react';
 import {List, InputItem, NavBar, Icon} from 'antd-mobile';
 import {connect} from 'react-redux';
 import {getMsgList, sendMsg, recvMsg} from '../../redux/chat.redux';
+import {getChatId} from '../../util';
 
 @connect(
     state=>state,
@@ -15,7 +16,6 @@ class Chat extends React.Component{
     componentDidMount(){
         console.log(this.props.chat.chatmsg);
         if(this.props.chat.chatmsg.length === 0){
-            console.log('fdsfds');
             this.props.getMsgList();
             this.props.recvMsg();
         }
@@ -24,6 +24,7 @@ class Chat extends React.Component{
         const from = this.props.user._id;
         const to = this.props.match.params.user;
         const msg = this.state.text;
+        console.log({from, to, msg});
         this.props.sendMsg({from, to, msg})
         this.setState({text: ''})
     }
@@ -31,6 +32,8 @@ class Chat extends React.Component{
         const userId = this.props.match.params.user;
         const Item = List.Item;
         const users = this.props.chat.users;
+        const chatId = getChatId(userId, this.props.user._id);
+        const chatmsgs = this.props.chat.chatmsg.filter(v=>v.chatId===chatId);
         console.log(users);
         if(!users[userId]){return null;}
 
@@ -45,7 +48,9 @@ class Chat extends React.Component{
                 >
                     {users[userId].name}
                 </NavBar>
-                {this.props.chat.chatmsg.map(v=>{
+                {chatmsgs.map(v=>{
+                    console.log(v);
+                    console.log(users);
                     const avatar = require(`../img/${users[v.from].avatar}.svg`)
                     return v.from===userId?(
                         <List key={v._id}>
