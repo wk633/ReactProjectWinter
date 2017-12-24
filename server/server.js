@@ -4,13 +4,24 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const config = require('./config');
 
+const model = require('./model');
+const Chat = model.getModel('chat');
+
 const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
 io.on('connection', (socket)=>{
     socket.on('sendmsg', (data)=>{
-        console.log(data)
-        io.emit('recvmsg', data);
+        const {from, to, msg} = data;
+        console.log('from:', from);
+        console.log('to:', to);
+
+        const chatId = [from,to].sort().join("");
+        console.log('chatId:', chatId);
+        
+        Chat.create({chatId, from, to, content: msg}, (err, doc)=>{
+            io.emit('recvmsg', Object.assign({}, doc._doc))
+        })
     })
 })
 
