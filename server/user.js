@@ -79,6 +79,20 @@ Router.post('/login', (req, res) => {
     })
 })
 
+Router.post('/readmsg', (req, res)=>{
+    const userId = req.cookies.userId;
+    const {from} = req.body;
+    console.log(userId, from);
+    Chat.update({from, to:userId}, {'$set': {read: true}}, {'multi': true},(err, doc)=>{
+        if(!err){
+            console.log(doc);
+            return res.json({code: 0})
+        }else{
+            return res.json({code:1, msg:'modify unread failed'})
+        }
+    })
+})
+
 Router.post('/update', (req, res)=>{
     const userId = req.cookies.userId;
     if(!userId) return res.json({code: 1, msg: 'login first'});
