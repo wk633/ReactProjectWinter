@@ -86,7 +86,7 @@ Router.post('/readmsg', (req, res)=>{
     Chat.update({from, to:userId}, {'$set': {read: true}}, {'multi': true},(err, doc)=>{
         if(!err){
             console.log(doc);
-            return res.json({code: 0})
+            return res.json({code: 0, num: doc.nModified})
         }else{
             return res.json({code:1, msg:'modify unread failed'})
         }
