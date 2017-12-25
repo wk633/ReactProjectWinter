@@ -61,3 +61,18 @@ export function recvMsg(){
         })
     }
 }
+
+function msgRead({from, userId, num}){
+    return {type: MSG_READ, payload:{from, userId, num}}
+}
+export function readMsg(from){
+    return (dispatch, getState) => {
+        axios.post('/user/readmsg', {from})
+        .then(res=>{
+            const userId = getState().user._id;
+            if(res.status === 200 && res.data.code === 0) {
+                dispatch(msgRead({from, userId, num: res.data.num}));
+            }
+        })
+    }
+}
