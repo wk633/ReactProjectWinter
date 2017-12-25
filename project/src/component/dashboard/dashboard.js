@@ -6,11 +6,9 @@ import NavLinkBar from '../navlink/navlink';
 import Boss from '../boss/boss';
 import Genius from '../genius/genius';
 import User from '../user/user';
+import Msg from '../msg/msg';
 import {getMsgList,recvMsg} from '../../redux/chat.redux';
 
-function Msg(){
-    return (<h2>Message</h2>);
-}
 
 @withRouter
 @connect(
